@@ -12,31 +12,34 @@
 
 #include <stdio.h>
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strcat(char *dest, char *src)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
+	j = 0;
+	while (dest[j])
+		j++;
+	while (src[i])
 	{
-		if (s1[i] < s2[i])
-		{
-			return (-1);
-		}
-		if (s1[i] > s2[i])
-		{
-			return (1);
-		}
+		dest[j + i] = src[i];
 		i++;
 	}
-	return (0);
+	dest[j + i] = '\0';
+	return (dest);
 }
 
 
-int main(void) {
-    char s1[] = "abcd";
-    char s2[] = "abcdef";
-    int result = ft_strcmp(s1,s2);
-   printf("%d\n", result);
-    return (0);
+int main(void)
+{
+    char destination[15] = "hello, ";
+    const char source[] = "world";
+
+    strcat(destination, source);
+
+    printf("Concatenated string: %s\n", destination);
+
+    return 0;
 }
+
